@@ -1,0 +1,16 @@
+<div class='register'>
+
+<h1>Register</h1>
+
+<%= render 'form' %>
+</div>
+<div class='login'>
+<h1>Login</h1>
+<form action='/sessions' method='post'>
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<p><input type='email' name='email' placeholder="Email" /></p>
+	<p><input type='password' name='password' placeholder="Password" /></p>
+	<p><input type='submit' value='Submit'></p>
+</form>
+</div>
+

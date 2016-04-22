@@ -1,0 +1,57 @@
+
+<style>
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+#bold{
+	font-weight: bold;
+}
+</style>
+<% flash.each do |name, msg| %>
+  <p><%= msg %></p>
+<% end %>
+<h2>Welcome <%= @user.first_name %> <%= @user.last_name%>!</h2>
+
+<strong>All the songs in our hub:</strong>
+
+<table>
+<tr>
+	<td id='bold'>Artist</td>
+	<td id='bold'>Title</td>
+	<td id='bold'>No. of Times Song Has Been Added</td>
+	<td id='bold'>Add to Playlist</td>
+</tr>
+<% @songs.each do |song| %>
+<tr>
+	<td><%=song[:artist]%></td>
+	<td><a href='/songs/<%=song.id %>'><%=song[:title]%></a></td>
+	<td><%=song.favorites.count%>
+	<td>
+
+			<form action='/favorites' method='post'>
+				<input type ="hidden" name = "authenticity_token" value = "<%= form_authenticity_token %>">
+				<input type ='hidden' name='favorite' value ='<%= song.id%>'>
+          		<input type ='Submit' value ='Add'>
+			</form>
+
+	</td>
+</tr>
+<% end %>
+</table>
+
+<strong>Add a Song</strong>
+
+
+
+<form action='/songs' method='post'>
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<input type='hidden' name='song[user_id]' value='<%= @user.id%>'>
+	<p>Artist <input type='text' name='song[artist]' /></p>
+	<p>Title<input type='text' name='song[title]' /></p>
+	<p><input type='submit' value='Add Song'></p>
+</form>
+
+

@@ -1,0 +1,30 @@
+<style>
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+#bold{
+	font-weight: bold;
+}
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Beltexam</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if current_user %>
+<%= link_to 'Logout', :root %>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

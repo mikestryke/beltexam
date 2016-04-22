@@ -1,0 +1,13 @@
+<a href='/songs/'>Dashboard</a>
+<h2>Others who added <%=@showsong.artist%> - <%=@showsong.title%> </h2>
+ <strong>Name and number of times added to playlist!</strong>
+<% @showsong.favorites.each do |x|%>
+	<p><%= link_to x.song.user.first_name, user_path(x.song.user.id) %> | <%= x.user.favorites.count%></p>
+<%end%>
+
+<% @showsong.users_favorited.each do |y| %>
+	<p><%= y.first_name%></ | <%= y.favorites.count %></p>
+<%end%>
+
+
+

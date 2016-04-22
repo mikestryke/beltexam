@@ -1,0 +1,11 @@
+<a href='/songs/'>Dashboard</a>
+<h2>
+  <strong><%= @user.first_name %> <%= @user.last_name %>'s Playlist</strong>
+  <%= @user.first_name %>
+</h2>
+
+<strong>Artist, title, and number of times added!</strong>
+		<% @user.songs.each do |x|%>
+			<p><%= x.artist%> | <%= x.title%> | <%= x.favorites.count%></p>
+		<%end%>
+
